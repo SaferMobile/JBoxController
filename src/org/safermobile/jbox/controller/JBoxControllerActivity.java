@@ -89,12 +89,16 @@ public class JBoxControllerActivity extends Activity implements Runnable, Stream
 			lds.installPackage("tcptraceroute");
 			lds.installPackage("python");
 
-			
-			//lds.doTest();
+			update("> install jb scripts... ");
+			lds.runCommand("mkdir /var/opt/jb");
+			lds.runCommand("cd /var/opt/jb");
+			lds.runCommand("wget --no-check-certificate https://lab.safermobile.org/jb/jbscripts.tar.gz");
+		//	lds.runCommand("cp /mnt/sdcard/jbscripts.tar.gz .");
+			lds.runCommand("tar xzvf jbscripts.tar.gz");
 			
 			update("> beginning tests... ");
 			
-			lds.runJB("/mnt/sdcard/jb/");
+			lds.runJB("/var/opt/jb/jbscripts/");
 		}
 		catch (Exception e)
 		{
